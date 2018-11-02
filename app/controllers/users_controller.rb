@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   
   def show
     @user = User.find(params[:id])
+#    @interview = @user.interviews.build
   end
 
   def new
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "Welcome to e-Navigator!"
+      flash[:success] = "新しい面接日程が追加されました。"
       redirect_to @user
     else
       render 'new'
