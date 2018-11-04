@@ -1,4 +1,5 @@
 class InterviewsController < ApplicationController
+  before_action :logged_in_user
   
   def index
     @user = User.find(current_user.id)
@@ -41,14 +42,12 @@ class InterviewsController < ApplicationController
     redirect_to user_interviews_url
   end
   
-
-  
   def show
      @interview = current_user.interviews.build(interview_params)
   end
-
+  
   private
-
+  
     def interview_params
       params.require(:interview).permit(:time, :status)
     end
