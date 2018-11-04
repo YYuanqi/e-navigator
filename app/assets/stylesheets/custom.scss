@@ -100,13 +100,6 @@ input, textarea, select, .uneditable-input {
   @include box_sizing;
 }
 
-select {
-    width: 100%;
-    padding: 8px 10px;
-    border-radius: 4px;
-    background-color: #f1f1f1;
-}
-
 input {
   height: auto !important;
 }
@@ -134,4 +127,12 @@ input {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
+}
+
+.datetime-select {
+  width: 100%;
+  margin-bottom: 15px;
+  @include box_sizing;
+  padding: 8px 10px;
+  border-radius: 4px;
 }

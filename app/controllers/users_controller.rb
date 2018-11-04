@@ -3,8 +3,6 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update, :show]
   
   def show
-    @user = User.find(params[:id])
-#    @interview = @user.interviews.build
   end
 
   def new
@@ -15,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       log_in @user
-      flash[:success] = "新しい面接日程が追加されました。"
+      flash[:success] = "Welcome to the e-Navigator"
       redirect_to @user
     else
       render 'new'
