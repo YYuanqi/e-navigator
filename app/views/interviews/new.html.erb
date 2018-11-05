@@ -1,11 +1,10 @@
-<% provide(:title, 'create a interview') %>
-<h1>create a interview</h1>
+<% provide(:title, '新規面接作成') %>
+<h1>新規面接作成</h1>
   
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for [:user, @interview] do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
-        <div class="datetime-select">
           <%= f.label :開始時間 %><br>
           <%= f.datetime_select(
             :time,# プロパティ名
@@ -14,8 +13,7 @@
             default:        Time.zone.now,# デフォルトの年
             use_two_digit_numbers: true,# 月日を2桁の値で表示
             class: "form-control") %>
-        </div>
-      <%= f.submit "面接作成", class: "btn btn-primary" %>
+      <%= f.submit "登録", class: "btn bnt-default btn-primary" %>
     <% end %>
   </div>
 </div>

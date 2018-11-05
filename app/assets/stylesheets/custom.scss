@@ -93,10 +93,18 @@ p {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
+  @include box_sizing;
+}
+
+select {
+  width: auto;
+  margin-bottom: 15px;
+  padding: 6px 6px;
+  border-radius: 4px;
   @include box_sizing;
 }
 
@@ -127,12 +135,4 @@ input {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
-}
-
-.datetime-select {
-  width: 100%;
-  margin-bottom: 15px;
-  @include box_sizing;
-  padding: 8px 10px;
-  border-radius: 4px;
 }
