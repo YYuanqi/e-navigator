@@ -2,8 +2,7 @@ class InterviewsController < ApplicationController
   before_action :logged_in_user
   
   def index
-    @user = User.find(current_user.id)
-    @interviews = @user.interviews.all
+    @interviews = current_user.interviews.all
   end
   
   def new
