@@ -13,8 +13,7 @@ class InterviewsController < ApplicationController
   
   def create
     @interview = current_user.interviews.new(interview_params)
-#    @interview.update_attributes(status:"保留")
-    if @interview.update_attributes(status:"保留") && @interview.save
+    if @interview.save
       flash[:success] = "面接が作成されました"
       redirect_to user_interviews_url
     else
