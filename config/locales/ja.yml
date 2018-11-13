@@ -1,7 +1,7 @@
 ja:
-  activerecord:
-    attributes:
-      interview/status:
+  enums:
+    interview:
+      status:
         hold: 保留
         approved: 承認
         rejected: 却下
@@ -30,5 +30,3 @@ ja:
       long: "%Y年%m月%d日(%a) %H時%M分%S秒 %Z"
     am: "午前"
     pm: "午後"
-
-        

@@ -14,7 +14,7 @@
   <tbody>
     <tr>
       <td><div class="text-justify"> <%= interview.time %></div></td>
-      <td><div class="text-justify"> <%= interview.human_attribute_enum(:status) %></div></td>
+      <td><div class="text-justify"> <%= interview.status_i18n %></div></td>
       <td><%= link_to "編集", edit_user_interview_path(:user, interview), class: "btn btn-sx btn-primary" %></td>
       <td><%= link_to "削除", user_interview_path(:user, interview), method: :delete, class: "btn btn-sx btn-primary",
                                        data: { confirm: "面接を削除します。よろしいですか？" } %></div></td>
