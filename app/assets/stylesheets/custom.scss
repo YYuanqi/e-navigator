@@ -93,7 +93,7 @@ p {
 
 /* forms */
 
-input, textarea, select, .uneditable-input {
+input, textarea, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
@@ -101,10 +101,11 @@ input, textarea, select, .uneditable-input {
 }
 
 select {
-    width: 100%;
-    padding: 8px 10px;
-    border-radius: 4px;
-    background-color: #f1f1f1;
+  width: auto;
+  margin-bottom: 15px;
+  padding: 6px 6px;
+  border-radius: 4px;
+  @include box_sizing;
 }
 
 input {
@@ -123,5 +124,15 @@ input {
   @extend .has-error;
   .form-control {
     color: $state-danger-text;
+  }
+}
+
+.users {
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
   }
 }

@@ -1,0 +1,19 @@
+<% provide(:title, '新規面接作成') %>
+<h1>新規面接作成</h1>
+  
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for [:user, @interview] do |f| %>
+      <%= render 'shared/error_messages', object: f.object %>
+          <%= f.label :開始時間 %><br>
+          <%= f.datetime_select(
+            :time,# プロパティ名
+            start_year:     Time.zone.now.year,# 選択可能な開始年
+            end_year:       Time.zone.now.next_year.year,# 選択可能な終了年
+            default:        Time.zone.now,# デフォルトの年
+            use_two_digit_numbers: true,# 月日を2桁の値で表示
+            class: "form-control") %>
+      <%= f.submit "登録", class: "btn bnt-default btn-primary" %>
+    <% end %>
+  </div>
+</div>

@@ -10,6 +10,7 @@ gem 'turbolinks',   '5.0.1'
 gem 'jbuilder',     '2.7.0'
 gem 'bootstrap-sass'
 gem 'bcrypt',       '3.1.12'
+gem 'enum_help'
 
 group :development, :test do
   gem 'pg', '0.20.0'
