@@ -13,7 +13,7 @@
 
 <% @interviews.each do |interview| %>
   <div class="clearfix" style="margin-bottom: 10px;">
-    <%= link_to interview.time, edit_user_interview_path(current_user, interview), class: "btn btn-sx btn-primary",
+    <%= link_to interview.time, user_interview_path(User.find(params[:user_id]), interview), class: "btn btn-sx btn-primary",
                                   data: { confirm: "#{interview.time} で面接を確定していいですか？" } %>
   </div>
 <% end %>

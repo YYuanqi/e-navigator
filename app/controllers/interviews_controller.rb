@@ -6,6 +6,7 @@ class InterviewsController < ApplicationController
   def index
     @interviews = User.find(params[:user_id]).interviews.all
     unless current_user == User.find(params[:user_id])
+      @interviews = User.find(params[:user_id]).interviews.where.not(status: 1)
       render 'list'
     end
   end
@@ -43,6 +44,13 @@ class InterviewsController < ApplicationController
   end
 
   def show
+    unless current_user == User.find(params[:user_id])
+      @interview.status = 1
+      @interview.save
+      User.find(params[:user_id]).interviews.where.not(id: @interview.id).update_all(status: 2)
+      flash[:success] = "面接が承認されました"
+    end
+    redirect_to action: "index"
   end
 
   private
