@@ -1,0 +1,19 @@
+<% provide(:title, 'Interview Scheduler') %>
+<h1><%=User.find(params[:user_id]).name %>さんの面接一覧</h1>
+<h3>現在の面接日程</h3>
+<h4>に面接が設定されています。</h4>
+<hr>
+<ul class="nav nav-list"><li class="divider"></li></ul>
+
+<div class="clearfix" style="margin-bottom: 10px;">
+  面接日程を変更する場合は以下から選んでください。
+</div>
+
+
+
+<% @interviews.each do |interview| %>
+  <div class="clearfix" style="margin-bottom: 10px;">
+    <%= link_to interview.time, edit_user_interview_path(current_user, interview), class: "btn btn-sx btn-primary",
+                                  data: { confirm: "#{interview.time} で面接を確定していいですか？" } %>
+  </div>
+<% end %>

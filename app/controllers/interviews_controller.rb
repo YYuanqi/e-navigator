@@ -1,10 +1,13 @@
 class InterviewsController < ApplicationController
   before_action :logged_in_user
-  before_action :set_interview, only: [:edit, :update, :destroy]
+  before_action :set_interview, only: [:edit, :update, :destroy, :show]
 
 
   def index
-    @interviews = current_user.interviews.all
+    @interviews = User.find(params[:user_id]).interviews.all
+    unless current_user == User.find(params[:user_id])
+      render 'list'
+    end
   end
 
   def new
@@ -40,7 +43,6 @@ class InterviewsController < ApplicationController
   end
 
   def show
-     @interview = current_user.interviews.build(interview_params)
   end
 
   private
