@@ -1,13 +1,15 @@
 class InterviewsController < ApplicationController
   before_action :logged_in_user
   before_action :set_interview, only: [:edit, :update, :destroy, :show]
+  before_action :set_user, only: [:index, :show]
 
 
   def index
-    @interviews = User.find(params[:user_id]).interviews.all
-    unless current_user == User.find(params[:user_id])
+    unless current_user == @user
       @interviews = User.find(params[:user_id]).interviews.where.not(status: 1)
       render 'list'
+    else
+      @interviews = @user.interviews.all
     end
   end
 
@@ -44,10 +46,10 @@ class InterviewsController < ApplicationController
   end
 
   def show
-    unless current_user == User.find(params[:user_id])
+    unless current_user == @user
       @interview.status = 1
       @interview.save
-      User.find(params[:user_id]).interviews.where.not(id: @interview.id).update_all(status: 2)
+      @user.interviews.where.not(id: @interview.id).update_all(status: 2)
       flash[:success] = "面接が承認されました"
     end
     redirect_to action: "index"
@@ -61,5 +63,9 @@ class InterviewsController < ApplicationController
 
     def set_interview
       @interview = Interview.find(params[:id])
+    end
+
+    def set_user
+      @user = User.find(params[:user_id])
     end
 end

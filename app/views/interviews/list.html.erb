@@ -1,7 +1,13 @@
 <% provide(:title, 'Interview Scheduler') %>
-<h1><%=User.find(params[:user_id]).name %>さんの面接一覧</h1>
+<h1><%=@user.name %>さんの面接一覧</h1>
 <h3>現在の面接日程</h3>
-<h4>に面接が設定されています。</h4>
+
+<h4><% if @user.interviews.find_by(status: 1) %>
+  <strong><%= @user.interviews.find_by(status: 1).time %></strong>に面接が設定されています。
+    <% else %>
+       面接が設定されていません。
+    <% end %>
+</h4>
 <hr>
 <ul class="nav nav-list"><li class="divider"></li></ul>
 
@@ -13,7 +19,7 @@
 
 <% @interviews.each do |interview| %>
   <div class="clearfix" style="margin-bottom: 10px;">
-    <%= link_to interview.time, user_interview_path(User.find(params[:user_id]), interview), class: "btn btn-sx btn-primary",
+    <%= link_to interview.time, user_interview_path(@user, interview), class: "btn btn-sx btn-primary",
                                   data: { confirm: "#{interview.time} で面接を確定していいですか？" } %>
   </div>
 <% end %>
