@@ -22,8 +22,8 @@
         <th><div class="text-justify"> <%= user.gender %></div></th>
         <th><div class="text-justify"> <%= user.school %></div></th>
         <th><div class="text-justify">
-        <% if user.interviews.find_by(status: 1) %>
-          <%= user.interviews.find_by(status: 1).time %>
+        <% if user.interviews.find_by(status: :approved) %>
+          <%= user.interviews.find_by(status: :approved).time %>
         <% else %>
          -
         <% end %>
