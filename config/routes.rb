@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   resources :users do
     resources :interviews
+    patch 'interviews/:id/apply', to: 'interviews#apply', as: :apply_interview
   end
 end

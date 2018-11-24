@@ -1,7 +1,7 @@
 class InterviewsController < ApplicationController
   before_action :logged_in_user
-  before_action :set_interview, only: [:edit, :update, :destroy, :show]
-  before_action :set_user, only: [:index, :show]
+  before_action :set_interview, only: [:edit, :update, :destroy, :apply]
+  before_action :set_user, only: [:index, :show, :apply]
 
 
   def index
@@ -46,6 +46,9 @@ class InterviewsController < ApplicationController
   end
 
   def show
+  end
+
+  def apply
     unless current_user == @user
       @interview.status = :approved
       @interview.save
