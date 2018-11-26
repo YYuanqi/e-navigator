@@ -22,11 +22,7 @@
         <th><div class="text-justify"> <%= user.gender %></div></th>
         <th><div class="text-justify"> <%= user.school %></div></th>
         <th><div class="text-justify">
-        <% if user.interviews.find_by(status: :approved) %>
-          <%= user.interviews.find_by(status: :approved).time %>
-        <% else %>
-         -
-        <% end %>
+        <%= get_interview_time(user) %>
         </div></th>
         <th><%= link_to "面接一覧", user_interviews_path(user), class: "btn btn-sx btn-primary" %></th>
       </tr>

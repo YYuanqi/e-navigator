@@ -7,6 +7,7 @@ class InterviewsController < ApplicationController
   def index
     if is_interviewer
       @interviews = User.find(params[:user_id]).interviews.where.not(status: :approved)
+      @interviewtime = @user.interviews.find_by(status: :approved)
     else
       @interviews = @user.interviews.all
     end
