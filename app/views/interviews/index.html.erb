@@ -1,4 +1,4 @@
-<% if @flag == 1 %>
+<% if is_interviewer %>
 <%= render :partial => "index_for_interviewer" %>
 <% else %>
 <%= render :partial => "index_for_user.html" %>
