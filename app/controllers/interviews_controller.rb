@@ -7,7 +7,7 @@ class InterviewsController < ApplicationController
   def index
     unless current_user == @user
       @interviews = User.find(params[:user_id]).interviews.where.not(status: :approved)
-      render 'list'
+      @flag = 1;
     else
       @interviews = @user.interviews.all
     end
@@ -55,7 +55,7 @@ class InterviewsController < ApplicationController
       @user.interviews.where.not(id: @interview.id).update_all(status: :rejected)
       flash[:success] = "面接が承認されました"
     end
-    redirect_to action: "index"
+    redirect_to user_interviews_url
   end
 
   private

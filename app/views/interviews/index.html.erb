@@ -1,24 +1,5 @@
-<% provide(:title, 'My interviews') %>
-<h1><%=current_user.name %>さんの面接一覧</h1>
-  <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>面接開始時間</th>
-        <th>承認状態</th>
-        <th colspan="1"></th>
-      </tr>
-    </thead>
-
-
-  <% @interviews.each do |interview| %>
-  <tbody>
-    <tr>
-      <th><div class="text-justify"> <%= interview.time %></div></th>
-      <th><div class="text-justify"> <%= interview.status_i18n %></div></th>
-      <th><%= link_to "編集", edit_user_interview_path(current_user, interview), class: "btn btn-sx btn-primary" %></th>
-      <th><%= link_to "削除", user_interview_path(current_user, interview), method: :delete, class: "btn btn-sx btn-primary",
-                                       data: { confirm: "面接を削除します。よろしいですか？" } %></div></th>
-    </tr>
-  <% end %>
-  </table>
-  <%= link_to "新規面接作成", new_user_interview_path(current_user), class: "btn btn-default btn-primary" %>
+<% if @flag == 1 %>
+<%= render :partial => "index_for_interviewer" %>
+<% else %>
+<%= render :partial => "index_for_user.html" %>
+<% end %>
