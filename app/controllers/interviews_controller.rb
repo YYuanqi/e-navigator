@@ -2,15 +2,9 @@ class InterviewsController < ApplicationController
   before_action :logged_in_user
   before_action :set_interview, only: [:edit, :update, :destroy, :apply]
   before_action :set_user, only: [:index, :show, :apply]
-  include InterviewsHelper
 
   def index
-    if is_interviewer
-      @interviews = User.find(params[:user_id]).interviews.where.not(status: :approved)
-      @interview = @user.interviews.find_by(status: :approved)
-    else
       @interviews = @user.interviews.all
-    end
   end
 
   def new

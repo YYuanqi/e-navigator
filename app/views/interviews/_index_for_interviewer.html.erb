@@ -1,7 +1,7 @@
 <% provide(:title, 'Interview Scheduler') %>
+<% @interview = @user.interviews.find_by(status: :approved) %>
 <h1><%=@user.name %>さんの面接一覧</h1>
 <h3>現在の面接日程</h3>
-
 <h4><% if @interview != nil %>
   <strong><%= @interview.time %></strong>に面接が設定されています。
     <% else %>
@@ -17,7 +17,7 @@
 
 
 
-<% @interviews.each do |interview| %>
+<% @interviews.where.not(status: :approved).each do |interview| %>
   <div class="clearfix" style="margin-bottom: 10px;">
     <%= link_to interview.time, user_apply_interview_path(@user, interview), method: :patch, class: "btn btn-sx btn-primary",
                                   data: { confirm: "#{interview.time} で面接を確定していいですか？" } %>
