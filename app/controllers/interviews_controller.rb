@@ -43,7 +43,7 @@ class InterviewsController < ApplicationController
   end
 
   def apply
-    unless current_user == @user
+    if current_user != @user
       @interview.status = :approved
       @interview.save
       @user.interviews.where.not(id: @interview.id).update_all(status: :rejected)
