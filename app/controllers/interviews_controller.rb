@@ -44,8 +44,7 @@ class InterviewsController < ApplicationController
 
   def apply
     if current_user != @user
-      @interview.status = :approved
-      @interview.save
+      @interview.approved!
       @user.interviews.where.not(id: @interview.id).update_all(status: :rejected)
       flash[:success] = "面接が承認されました"
     end
