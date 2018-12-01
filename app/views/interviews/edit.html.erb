@@ -1,9 +1,9 @@
 <% provide(:title, '面接更新') %>
 <h1>面接更新</h1>
-  
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-    <%= form_for [:user, @interview] do |f| %>
+    <%= form_for [current_user, @interview] do |f| %>
       <%= render 'shared/error_messages', object: f.object %>
         <div class="datetime-select">
           <%= f.label :開始時間 %><br>
