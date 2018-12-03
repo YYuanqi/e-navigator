@@ -51,6 +51,13 @@ class InterviewsController < ApplicationController
     redirect_to user_interviews_url
   end
 
+  def notify
+    @user = User.find(params[:user][:id])
+    NotificationMailer.send_request_to_user(@user).deliver_now
+    flash[:success] = "申請が完了しました。"
+    redirect_to user_interviews_url
+  end
+
   private
 
     def interview_params

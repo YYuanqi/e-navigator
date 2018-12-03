@@ -15,6 +15,8 @@ gem 'enum_help'
 group :development, :test do
   gem 'pg', '0.20.0'
   gem 'byebug',  '9.0.6', platform: :mri
+  gem "letter_opener"
+  gem 'letter_opener_web'
 end
 
 group :development do
