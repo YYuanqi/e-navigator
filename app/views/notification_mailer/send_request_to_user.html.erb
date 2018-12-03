@@ -1,8 +1,7 @@
-<div><%= @user.name %> 様
+<p><%= @to_user.name %> 様</p>
 
-  の面接希望日が決まりました。
+<p><%= @from_user.name %>の面接希望日が決まりました。</p>
 
-以下の URL から、面接日時の承認をよろしくお願いします。
+<p>以下の URL から、面接日時の承認をよろしくお願いします。</p>
 
-<%= user_interviews_url(@user) %>
-</div>
+<p><%= link_to user_interviews_url(@from_user), user_interviews_url(@from_user) %></p>

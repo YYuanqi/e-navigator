@@ -53,7 +53,7 @@ class InterviewsController < ApplicationController
 
   def notify
     @user = User.find(params[:user][:id])
-    NotificationMailer.send_request_to_user(@user).deliver_now
+    NotificationMailer.send_request_to_user(@user, current_user).deliver_now
     flash[:success] = "申請が完了しました。"
     redirect_to user_interviews_url
   end
