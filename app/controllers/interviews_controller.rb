@@ -46,6 +46,7 @@ class InterviewsController < ApplicationController
     if current_user != @user
       @interview.approved!
       @user.interviews.where.not(id: @interview.id).update_all(status: :rejected)
+      NotificationMailer.send_comfirmation_to_users(@user, current_user, @interview.time).deliver_now
       flash[:success] = "面接が承認されました"
     end
     redirect_to user_interviews_url
