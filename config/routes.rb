@@ -11,6 +11,6 @@ Rails.application.routes.draw do
   resources :users do
     resources :interviews
     patch 'interviews/:id/apply', to: 'interviews#apply', as: :apply_interview
-    post 'interviews/notify', to: 'interviews#notify', as: :notify_interviews
+    post 'interviews/approve', to: 'interviews#approve', as: :approve_interviews
   end
 end

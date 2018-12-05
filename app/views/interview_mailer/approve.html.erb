@@ -1,0 +1,7 @@
+<p><%= @interviewer.name %> 様</p>
+
+<p><%= @interviewee.name %>の面接希望日が決まりました。</p>
+
+<p>以下の URL から、面接日時の承認をよろしくお願いします。</p>
+
+<p><%= link_to user_interviews_url(@interviewee), user_interviews_url(@interviewee) %></p>
