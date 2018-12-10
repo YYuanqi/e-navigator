@@ -46,8 +46,16 @@ class InterviewsController < ApplicationController
     if current_user != @user
       @interview.approved!
       @user.interviews.where.not(id: @interview.id).update_all(status: :rejected)
+      InterviewMailer.apply(current_user, @user, @interview.time).deliver_now
       flash[:success] = "面接が承認されました"
     end
+    redirect_to user_interviews_url
+  end
+
+  def approve
+    @user = User.find(params[:user][:id])
+    InterviewMailer.approve(@user, current_user).deliver_now
+    flash[:success] = "申請が完了しました。"
     redirect_to user_interviews_url
   end
 

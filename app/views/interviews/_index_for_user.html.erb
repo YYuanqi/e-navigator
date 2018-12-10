@@ -1,5 +1,12 @@
 <% provide(:title, 'My interviews') %>
 <h1><%=current_user.name %>さんの面接一覧</h1>
+  <%= form_tag(user_approve_interviews_path(@user), method: "post") do %>
+<h4><%= label_tag("ユーザーを指定：") %>
+    <%= collection_select(:user, :id, User.where.not(id: current_user.id), :id, :email) %>
+    <%= button_tag("申請", class: "btn btn-success") %>
+  <% end %>
+</h4>
+
   <table class="table table-striped">
     <thead>
       <tr>
